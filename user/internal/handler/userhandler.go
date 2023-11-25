@@ -4,12 +4,12 @@ import (
 	"net/http"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
-	"zerodemo/internal/logic"
-	"zerodemo/internal/svc"
-	"zerodemo/internal/types"
+	"user/internal/logic"
+	"user/internal/svc"
+	"user/internal/types"
 )
 
-func ZerodemoHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+func UserHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var req types.Request
 		if err := httpx.Parse(r, &req); err != nil {
@@ -17,8 +17,8 @@ func ZerodemoHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 			return
 		}
 
-		l := logic.NewZerodemoLogic(r.Context(), svcCtx)
-		resp, err := l.Zerodemo(&req)
+		l := logic.NewUserLogic(r.Context(), svcCtx)
+		resp, err := l.User(&req)
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 		} else {

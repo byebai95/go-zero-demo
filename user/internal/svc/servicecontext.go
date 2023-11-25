@@ -1,7 +1,7 @@
 package svc
 
 import (
-	"zerodemo/internal/config"
+	"user/internal/config"
 )
 
 type ServiceContext struct {
